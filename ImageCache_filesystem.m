@@ -188,6 +188,31 @@ static NSMutableArray *imageHistory = nil;
     }
 }
 
+/*
+ * Empty the history and remove all cached images
+ */
++ (void) flush {
+    NSLog(@"ImageCache flush");
+    for (int index = 0; index < IMAGE_CACHE_CAPACITY; index++) {
+        NSString *imageHash = [imageHistory objectAtIndex:index];
+        NSString *imagePath = [[NSString stringWithString:cachesPath] stringByAppendingPathComponent:[NSString stringWithFormat:@"/%@.jpeg", imageHash]];
+        [[NSFileManager defaultManager] removeItemAtPath:imagePath error:nil];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:imagePath])
+        {
+            NSLog(@"ImageCache drop:%@ failed", imageHash);
+            // remove hash from history
+            [imageHistory removeObjectAtIndex:index] ;
+            [self checkCache] ;
+        }
+        else
+        {
+            NSLog(@"ImageCache drop:%@", imageHash);
+            // remove hash from history
+            [imageHistory removeObjectAtIndex:index] ;
+        }
+    }
+}
+
 - (void) dealloc {
     [imageHistory release] ;
 }
