@@ -23,5 +23,6 @@
 + (BOOL) setObject:(id)object forKey:(NSString *)key;
 
 + (void) checkCache;
++ (void) flush;
 
 @end
