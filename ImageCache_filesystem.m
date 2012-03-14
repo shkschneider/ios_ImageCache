@@ -215,6 +215,7 @@ static NSMutableArray *imageHistory = nil;
 
 - (void) dealloc {
     [imageHistory release] ;
+    [super dealloc] ;
 }
 
 @end

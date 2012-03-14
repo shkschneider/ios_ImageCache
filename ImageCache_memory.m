@@ -110,6 +110,7 @@ static NSMutableDictionary *imageMemoryCache = nil;
 - (void) dealloc {
   [imageHistory release] ;
   [imageMemoryCache release] ;
+  [super dealloc] ;
 }
 
 @end
