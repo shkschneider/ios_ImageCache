@@ -1,4 +1,4 @@
-ios -- iOS related codes
+ios_ImageCache -- image caching system (memory and filesystem)
 Copyright (C) 2012  Alan SCHNEIDER
 
 This program is free software; you can redistribute it and/or
